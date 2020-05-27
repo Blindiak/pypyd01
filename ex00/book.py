@@ -1,4 +1,5 @@
 from datetime import datetime
+from recipe import Recipe
 
 
 class Book:
@@ -28,5 +29,8 @@ class Book:
 
     def add_recipe(self, recipe):
         """Add a recipe to the book and update last_update"""
-        self.recipes_list[recipe.recipe_type][recipe.name] = recipe
-        self.last_update = datetime.now()
+        if type(recipe) is Recipe:
+            self.recipes_list[recipe.recipe_type][recipe.name] = recipe
+            self.last_update = datetime.now()
+        else:
+            print("ERROR")
