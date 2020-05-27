@@ -2,14 +2,19 @@ class Recipe:
     def __init__(self, name, cooking_lvl, cooking_time, ingredients,
                  description, recipe_type):
         valid = 1
-        if name == "":
+        if isinstance(name, str) and name == "":
+            print('bad name recipe')
             valid = 0
         if isinstance(cooking_lvl, int) \
                 and (cooking_lvl < 1 or cooking_lvl > 5):
+            print('bad cooking_lvl')
             valid = 0
         if isinstance(cooking_time, int) and cooking_time < 0:
+            print('bad cooking_time')
             valid = 0
-        if recipe_type not in ["starter", "lunch", "dessert"]:
+        if isinstance(recipe_type, str) and recipe_type not in ["starter", \
+                "lunch", "dessert"]:
+            print('bad recipe_type')
             valid = 0
         if valid == 1:
             self.name = str(name)
