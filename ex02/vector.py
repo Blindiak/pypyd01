@@ -13,33 +13,39 @@ class Vector():
             self.values = [float(i) for i in values]
 
     def __add__(self, v2):
-        if type(v2) is Vector and self.size == v2.size:
-            v3 = Vector(self.size)
-            for i, f in enumerate(self.values):
-                v3.values[i] = self.values[i] + v2.values[i]
-            return v3
+        if type(v2) is Vector:
+            if self.size == v2.size:
+                v3 = Vector(self.size)
+                for i, f in enumerate(self.values):
+                    v3.values[i] = self.values[i] + v2.values[i]
+                return v3
+            raise ValueError("vector with not same size")
         return NotImplemented
 
     def __radd__(self, other):
         return NotImplemented
 
     def __sub__(self, v2):
-        if type(v2) is Vector and self.size == v2.size:
-            v3 = Vector(self.size)
-            for i, f in enumerate(self.values):
-                v3.values[i] = self.values[i] - v2.values[i]
-            return v3
+        if type(v2) is Vector:
+            if self.size == v2.size:
+                v3 = Vector(self.size)
+                for i, f in enumerate(self.values):
+                    v3.values[i] = self.values[i] - v2.values[i]
+                return v3
+            raise ValueError("vector with not same size")
         return NotImplemented
 
     def __rsub__(self, v1):
         return NotImplemented
 
     def __mul__(self, v2):
-        if type(v2) is Vector and self.size == v2.size:
-            v3 = Vector(self.size)
-            for i, f in enumerate(self.values):
-                v3.values[i] = self.values[i] * v2.values[i]
-            return v3
+        if type(v2) is Vector:
+            if self.size == v2.size:
+                v3 = Vector(self.size)
+                for i, f in enumerate(self.values):
+                    v3.values[i] = self.values[i] * v2.values[i]
+                return sum(v3.values)
+            raise ValueError("vector with not same size")
         if isinstance(v2, (int, float)):
             v3 = Vector(self.size)
             for i, f in enumerate(self.values):
@@ -55,8 +61,7 @@ class Vector():
             v3 = Vector(self.size)
             for i, f in enumerate(self.values):
                 if v2 == 0:
-                    print("no zero div sorry")
-                    return
+                    raise ValueError("no zero div sorry")
                 v3.values[i] = self.values[i] / v2
             return v3
         return NotImplemented
