@@ -12,8 +12,9 @@ class Recipe:
         if isinstance(cooking_time, int) and cooking_time < 0:
             print('bad cooking_time')
             valid = 0
-        if isinstance(recipe_type, str) and recipe_type not in ["starter", \
-                "lunch", "dessert"]:
+        if isinstance(recipe_type, str) and recipe_type not in ["starter",
+                                                                "lunch",
+                                                                "dessert"]:
             print('bad recipe_type')
             valid = 0
         if valid == 1:
@@ -26,12 +27,11 @@ class Recipe:
         else:
             exit(1)
 
-
     def __str__(self):
         """Return the string to print with the recipe info"""
         txt = " ".join(["Recette:", self.name, "\ncook lvl:", str(
-                                                 self.cooking_lvl),
-                    "\ntime:", str(self.cooking_time), " minutes",
+            self.cooking_lvl),
+                        "\ntime:", str(self.cooking_time), " minutes",
                         "\ningredients :"])
         tmp = " ".join(self.ingredients)
         txt = " ".join([txt, tmp, self.description, self.recipe_type, "\n"])
